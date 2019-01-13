@@ -14,6 +14,8 @@ For even _more_ support, we were asked to submit links to code rather than the a
 
 ## How do I use this?
 
+Assignments 1, 3, and 4 require python (specifically python 3). Assignment 2 is a bit... unique... in that it uses Jython. Check the readmes for the specific assignments for more details. 
+
 If a python virtual environment has been setup for the project, a simple `pip install -r requirements.txt` should take care of the required packages.
 
 Each assignment folder has its own `run_experiment.py` that will do most of the work for you. The big exception is assignment 2. Assignment 2, at least in Fall of 2018, was due soon after the midterm which was soon after the first assignment. These assignments take a while so I didn't put a ton of effort into doing anything fancy for assignment 2. Not to say any of this is fancy, obviously.

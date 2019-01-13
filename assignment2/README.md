@@ -26,7 +26,7 @@ If these folders do not exist the experiments module will attempt to create them
 ## Running Experiments
 
 Each experiment can be run as a separate script. Running the actual optimization algorithms to generate data requires
-the use of Jyton.
+the use of Jython.
 
 For the three toy problems, run:
  - continuoutpeaks.py
