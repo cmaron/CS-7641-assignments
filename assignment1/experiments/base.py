@@ -1,4 +1,9 @@
+import logging
+
 from abc import ABC, abstractmethod
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
 class ExperimentDetails(object):
@@ -11,8 +16,9 @@ class ExperimentDetails(object):
 
 
 class BaseExperiment(ABC):
-    def __init__(self, details):
+    def __init__(self, details, verbose=False):
         self._details = details
+        self._verbose = verbose
 
     @abstractmethod
     def perform(self):
@@ -26,4 +32,4 @@ class BaseExperiment(ABC):
         :return: None
         """
         if self._verbose:
-            print(msg.format(*args))
+            logger.info(msg.format(*args))

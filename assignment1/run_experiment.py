@@ -1,9 +1,26 @@
 import argparse
 from datetime import datetime
+import logging
 import numpy as np
 
 import experiments
 from data import loader
+
+# Configure logging
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
+
+
+def run_experiment(experiment_details, experiment, timing_key, verbose, timings):
+    t = datetime.now()
+    for details in experiment_details:
+        exp = experiment(details, verbose=verbose)
+
+        logger.info("Running {} experiment: {}".format(timing_key, details.ds_readable_name))
+        exp.perform()
+    t_d = datetime.now() - t
+    timings[timing_key] = t_d.seconds
+
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(description='Perform some SL experiments')
@@ -28,15 +45,16 @@ if __name__ == '__main__':
     print("Loading data")
     print("----------")
 
-    ds1_data = loader.CreditDefaultData(verbose=verbose, seed=seed)
-    ds1_name = 'credit_default'
-    ds1_readable_name = 'Credit Default'
-    ds1_data.load_and_process()
-
-    ds2_data = loader.PenDigitData(verbose=verbose, seed=seed)
-    ds2_name = 'pen_digits'
-    ds2_readable_name = 'Handwritten Digits'
-    ds2_data.load_and_process()
+    ds1_details = {
+            'data': loader.CreditDefaultData(verbose=verbose, seed=seed),
+            'name': 'credit_default',
+            'readable_name': 'Credit Default',
+        }
+    ds2_details = {
+            'data': loader.PenDigitData(verbose=verbose, seed=seed),
+            'name': 'pen_digits',
+            'readable_name': 'Handwritten Digits',
+        }
 
     if verbose:
         print("----------")
@@ -44,61 +62,36 @@ if __name__ == '__main__':
 
     timings = {}
 
-    experiment_details_ds1 = experiments.ExperimentDetails(
-        ds1_data, ds1_name, ds1_readable_name,
-        threads=threads,
-        seed=seed
-    )
+    datasets = [
+        ds1_details,
+        ds2_details
+    ]
 
-    experiment_details_ds2 = experiments.ExperimentDetails(
-        ds2_data, ds2_name, ds2_readable_name,
-        threads=threads,
-        seed=seed
-    )
+    experiment_details = []
+    for ds in datasets:
+        data = ds['data']
+        data.load_and_process()
+        data.build_train_test_split()
+        data.scale_standard()
+        experiment_details.append(experiments.ExperimentDetails(
+            data, ds['name'], ds['readable_name'],
+            threads=threads,
+            seed=seed
+        ))
 
     if args.ann or args.all:
-        t = datetime.now()
-        experiment = experiments.ANNExperiment(experiment_details_ds1, verbose=verbose)
-        experiment.perform()
-        experiment = experiments.ANNExperiment(experiment_details_ds2, verbose=verbose)
-        experiment.perform()
-        t_d = datetime.now() - t
-        timings['ANN'] = t_d.seconds
+        run_experiment(experiment_details, experiments.ANNExperiment, 'ANN', verbose, timings)
 
     if args.boosting or args.all:
-        t = datetime.now()
-        experiment = experiments.BoostingExperiment(experiment_details_ds1, verbose=verbose)
-        experiment.perform()
-        experiment = experiments.BoostingExperiment(experiment_details_ds2, verbose=verbose)
-        experiment.perform()
-        t_d = datetime.now() - t
-        timings['Boost'] = t_d.seconds
+        run_experiment(experiment_details, experiments.BoostingExperiment, 'Boosting', verbose, timings)
 
     if args.dt or args.all:
-        t = datetime.now()
-        experiment = experiments.DTExperiment(experiment_details_ds1, verbose=verbose)
-        experiment.perform()
-        experiment = experiments.DTExperiment(experiment_details_ds2, verbose=verbose)
-        experiment.perform()
-        t_d = datetime.now() - t
-        timings['DT'] = t_d.seconds
+        run_experiment(experiment_details, experiments.DTExperiment, 'DT', verbose, timings)
 
     if args.knn or args.all:
-        t = datetime.now()
-        experiment = experiments.KNNExperiment(experiment_details_ds1, verbose=verbose)
-        experiment.perform()
-        experiment = experiments.KNNExperiment(experiment_details_ds2, verbose=verbose)
-        experiment.perform()
-        t_d = datetime.now() - t
-        timings['KNN'] = t_d.seconds
+        run_experiment(experiment_details, experiments.KNNExperiment, 'KNN', verbose, timings)
 
     if args.svm or args.all:
-        t = datetime.now()
-        experiment = experiments.SVMExperiment(experiment_details_ds1, verbose=verbose)
-        experiment.perform()
-        experiment = experiments.SVMExperiment(experiment_details_ds2, verbose=verbose)
-        experiment.perform()
-        t_d = datetime.now() - t
-        timings['SVM'] = t_d.seconds
+        run_experiment(experiment_details, experiments.SVMExperiment, 'SVM', verbose, timings)
 
     print(timings)
