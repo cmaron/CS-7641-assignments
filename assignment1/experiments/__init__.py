@@ -81,8 +81,8 @@ def basic_results(clf, classes, training_x, training_y, test_x, test_y, params, 
         # TODO: Ensure this is an estimator that can handle this?
         best_estimator = cv.best_estimator_.fit(training_x, training_y)
         final_estimator = best_estimator._final_estimator
-        best_params = pd.DataFrame([final_estimator.get_params()])
-        best_params.to_csv('{}/{}_{}_best_params.csv'.format(OUTPUT_DIRECTORY, clf_type, dataset), index=False)
+        grid_best_params = pd.DataFrame([final_estimator.get_params()])
+        grid_best_params.to_csv('{}/{}_{}_best_params.csv'.format(OUTPUT_DIRECTORY, clf_type, dataset), index=False)
         logger.info(" - Grid search complete")
 
         final_estimator.write_visualization('{}/images/{}_{}_LC'.format(OUTPUT_DIRECTORY, clf_type, dataset))

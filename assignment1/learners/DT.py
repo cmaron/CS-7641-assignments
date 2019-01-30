@@ -20,7 +20,7 @@ class DTLearner(learners.BaseLearner):
                  min_impurity_split=None,
                  class_weight=None,
                  presort=False,
-                 alpha=0,
+                 alpha=None,
                  verbose=False):
         super().__init__(verbose)
         self._alpha = alpha
@@ -131,6 +131,10 @@ class DTLearner(learners.BaseLearner):
         return self
 
     def fit(self, x, y, sample_weight=None, check_input=True, x_idx_sorted=None):
+        if self._alpha is None:
+            return self._learner.fit(x, y, sample_weight=sample_weight, check_input=check_input,
+                                     X_idx_sorted=x_idx_sorted)
+
         if sample_weight is None:
             sample_weight = np.ones(x.shape[0])
         self.training_x = x.copy()
