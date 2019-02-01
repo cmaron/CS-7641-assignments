@@ -175,9 +175,9 @@ def plot_model_complexity_curve(title, train_sizes, train_scores, test_scores, y
         if multiple_runs:
             plt.fill_between(train_sizes, train_scores_mean - train_scores_std,
                              train_scores_mean + train_scores_std, alpha=0.2,
-                             color="salmon")
+                             color="skyblue")
             plt.fill_between(train_sizes, test_scores_mean - test_scores_std,
-                             test_scores_mean + test_scores_std, alpha=0.2, color="skyblue")
+                             test_scores_mean + test_scores_std, alpha=0.2, color="salmon")
 
         plt.plot(train_sizes, train_points, 'o-', linewidth=1, markersize=4,
                  label="Training score")
