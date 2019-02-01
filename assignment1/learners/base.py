@@ -1,5 +1,10 @@
+import logging
+
 from abc import ABC, abstractmethod
 from sklearn.base import BaseEstimator, ClassifierMixin
+
+logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
+logger = logging.getLogger(__name__)
 
 
 class BaseLearner(ABC, BaseEstimator, ClassifierMixin):
@@ -65,7 +70,7 @@ class BaseLearner(ABC, BaseEstimator, ClassifierMixin):
         :return: None
         """
         if self._verbose:
-            print(msg.format(*args))
+            logger.info(msg.format(*args))
 
     def write_visualization(self, path):
         """

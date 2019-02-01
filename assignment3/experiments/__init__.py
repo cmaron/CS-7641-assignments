@@ -120,7 +120,7 @@ def basic_results(clf, classes, training_x, training_y, test_x, test_y, params, 
         logger.info(" - Visualization complete")
 
         with open('{}/test results.csv'.format(OUTPUT_DIRECTORY), 'a') as f:
-            ts = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%s')
+            ts = datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S.%f')
             f.write('"{}",{},{},{},"{}"\n'.format(ts, clf_type, dataset, test_score, cv.best_params_))
 
     n = training_y.shape[0]
