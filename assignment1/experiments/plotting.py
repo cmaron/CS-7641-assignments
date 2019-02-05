@@ -174,10 +174,9 @@ def plot_model_complexity_curve(title, train_sizes, train_scores, test_scores, y
     if chart_type == 'line':
         if multiple_runs:
             plt.fill_between(train_sizes, train_scores_mean - train_scores_std,
-                             train_scores_mean + train_scores_std, alpha=0.2,
-                             color="skyblue")
+                             train_scores_mean + train_scores_std, alpha=0.2)
             plt.fill_between(train_sizes, test_scores_mean - test_scores_std,
-                             test_scores_mean + test_scores_std, alpha=0.2, color="salmon")
+                             test_scores_mean + test_scores_std, alpha=0.2)
 
         plt.plot(train_sizes, train_points, 'o-', linewidth=1, markersize=4,
                  label="Training score")
@@ -251,10 +250,10 @@ def plot_model_timing(title, data_sizes, fit_scores, predict_scores, ylim=None):
                      fit_scores_mean + fit_scores_std, alpha=0.2)
     plt.fill_between(data_sizes, predict_scores_mean - predict_scores_std,
                      predict_scores_mean + predict_scores_std, alpha=0.2)
-    plt.plot(data_sizes, predict_scores_mean, 'o-', linewidth=1, markersize=4,
-             label="Predict time")
     plt.plot(data_sizes, fit_scores_mean, 'o-', linewidth=1, markersize=4,
              label="Fit time")
+    plt.plot(data_sizes, predict_scores_mean, 'o-', linewidth=1, markersize=4,
+             label="Predict time")
 
     plt.legend(loc="best")
     return plt
