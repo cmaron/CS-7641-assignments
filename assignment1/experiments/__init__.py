@@ -295,14 +295,15 @@ def perform_experiment(ds, ds_name, ds_readable_name, clf, clf_name, clf_label, 
             if 'x_scale' in complexity_param:
                 x_scale = complexity_param['x_scale']
             make_complexity_curve(ds_training_x, ds_training_y, complexity_param['name'], param_display_name,
-                                  complexity_param['values'], ds_clf.best_estimator_,
+                                  complexity_param['values'], ds_clf.best_estimator_ if best_params is None else ds_clf,
                                   clf_name, ds_name, ds_readable_name, x_scale,
                                   balanced_dataset=ds.balanced,
                                   threads=threads, verbose=verbose)
 
         if timing_params is not None:
             pipe.set_params(**timing_params)
-        make_timing_curve(ds_training_x, ds_training_y, ds_clf.best_estimator_, clf_name, ds_name, ds_readable_name,
+        make_timing_curve(ds_training_x, ds_training_y, ds_clf.best_estimator_ if best_params is None else ds_clf,
+                          clf_name, ds_name, ds_readable_name,
                           seed=seed, verbose=verbose)
 
     if iteration_details is not None:
