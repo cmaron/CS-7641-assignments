@@ -3,6 +3,10 @@
 
 The code for this assignment chooses three toy problems, but there are other options available in _ABAGAIL_. 
 
+## General
+
+If you are running this code in OS X you should consider downloading Jython directly. The version provided by homebrew does mot seem to work as expected for this code.
+
 ## Data
 
 The data loading code expects datasets to be stored in "./data".
