@@ -5,7 +5,10 @@ import logging
 import random as rand
 import numpy as np
 
-from data import loader
+#from data import loader
+import sys
+sys.path.append('../data')
+import loader
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')

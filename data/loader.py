@@ -405,4 +405,4 @@ if __name__ == '__main__':
     #ca_data.load_and_process()
 
     ta_data = TitanicData(verbose=True)
-	ta_data.load_and_process()
+    ta_data.load_and_process()
