@@ -7,6 +7,8 @@ The code for this assignment chooses three toy problems, but there are other opt
 
 If you are running this code in OS X you should consider downloading Jython directly. The version provided by homebrew does mot seem to work as expected for this code.
 
+On windows, install Jython 2.7.0 as the 2.7.1 can have issues. Used the installer version with Standard install to C:\jython2.7.0 path for simplicity.
+
 ## Data
 
 The data loading code expects datasets to be stored in "./data".
