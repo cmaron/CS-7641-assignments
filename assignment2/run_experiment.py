@@ -37,6 +37,7 @@ if __name__ == '__main__':
     seed = args.seed
     if seed is None:
         seed = np.random.randint(0, (2 ** 32) - 1)
+        #seed = np.random.randint(0)
         logger.info("Using seed {}".format(seed))
         np.random.seed(seed)
         rand.seed(seed)
@@ -55,11 +56,11 @@ if __name__ == '__main__':
         #     'name': 'htru2',
         #     'readable_name': 'HTRU2',
         # },
-        {
-            'data': loader.CreditApprovalData(verbose=verbose, seed=seed),
-            'name': 'credit_approval',
-            'readable_name': 'Credit Approval',
-        },
+        #{
+        #    'data': loader.CreditApprovalData(verbose=verbose, seed=seed),
+        #    'name': 'credit_approval',
+        #    'readable_name': 'Credit Approval',
+        #},
         {
             'data': loader.PenDigitData(verbose=verbose, seed=seed),
             'name': 'pen_digits',
