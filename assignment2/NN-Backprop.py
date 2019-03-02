@@ -5,7 +5,7 @@ Backprop NN training
 
 import sys
 
-sys.path.append("./ABAGAIL.jar")
+sys.path.append("./ABAGAIL/ABAGAIL.jar")
 from func.nn.backprop import BackPropagationNetworkFactory
 from shared import SumOfSquaresError, DataSet, Instance
 from func.nn.backprop import RPROPUpdateRule, BatchBackPropagationTrainer
