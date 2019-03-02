@@ -5,7 +5,7 @@ from time import clock
 
 import sys
 
-sys.path.append("./ABAGAIL.jar")
+sys.path.append("./ABAGAIL/ABAGAIL.jar")
 import java.util.Random as Random
 
 import dist.DiscreteDependencyTree as DiscreteDependencyTree

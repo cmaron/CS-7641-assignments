@@ -46,6 +46,16 @@ if __name__ == '__main__':
     logger.info("----------")
 
     datasets = [
+        {
+            'data': loader.TitanicData(verbose=verbose, seed=seed),
+            'name': 'titanic',
+            'readable_name': 'Titanic Passenger Data',
+        }
+        #{
+        #    'data': loader.PenDigitData(verbose=verbose, seed=seed),
+        #    'name': 'pen_digits',
+        #    'readable_name': 'Handwritten Digits',
+        #}
         # {
         #     'data': loader.StatlogVehicleData(verbose=verbose, seed=seed),
         #     'name': 'statlog_vehicle',
@@ -61,11 +71,6 @@ if __name__ == '__main__':
         #    'name': 'credit_approval',
         #    'readable_name': 'Credit Approval',
         #},
-        {
-            'data': loader.PenDigitData(verbose=verbose, seed=seed),
-            'name': 'pen_digits',
-            'readable_name': 'Handwritten Digits',
-        }
         # {
         #     'data': loader.SpamData(verbose=verbose, seed=seed),
         #     'name': 'spam',
