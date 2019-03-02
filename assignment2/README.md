@@ -7,6 +7,26 @@ The code for this assignment chooses three toy problems, but there are other opt
 
 If you are running this code in OS X you should consider downloading Jython directly. The version provided by homebrew does mot seem to work as expected for this code.
 
+## Environment (Windows 7 Pro 64-bit)
+
+Install Anaconda 3, run "Anaconda3 Prompt" as Administrator.
+
+```
+pip install -r requirements.txt
+```
+
+Installed Jython 2.7.0 as the 2.7.1 can have issues. Used the installer version with Standard install to C:\jython2.7.0 path for simplicity.
+
+```
+C:\> java -jar jython-installer-2.7.0.jar
+Ignoring indexes: https://pypi.python.org/simple/
+Downloading/unpacking setuptools
+Downloading/unpacking pip
+Installing collected packages: setuptools, pip
+Successfully installed setuptools pip
+Cleaning up...
+```
+
 ## Data
 
 The data loading code expects datasets to be stored in "./data".
