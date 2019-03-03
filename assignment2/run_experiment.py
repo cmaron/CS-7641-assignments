@@ -39,8 +39,9 @@ if __name__ == '__main__':
 
     seed = args.seed
     if seed is None:
-        seed = np.random.randint(0, (2 ** 32) - 1)
-        #seed = np.random.randint(0)
+        # works in jython but fails in python3
+        #seed = np.random.randint(0, (2 ** 32) - 1)
+        seed = 0
         logger.info("Using seed {}".format(seed))
         np.random.seed(seed)
         rand.seed(seed)
@@ -58,12 +59,12 @@ if __name__ == '__main__':
         #    'data': loader.PenDigitData(verbose=verbose, seed=seed),
         #    'name': 'pen_digits',
         #    'readable_name': 'Handwritten Digits',
+        #},
+        #{
+        #    'data': loader.StatlogVehicleData(verbose=verbose, seed=seed),
+        #    'name': 'statlog_vehicle',
+        #    'readable_name': 'Statlog Vehicle',
         #}
-        # {
-        #     'data': loader.StatlogVehicleData(verbose=verbose, seed=seed),
-        #     'name': 'statlog_vehicle',
-        #     'readable_name': 'Statlog Vehicle',
-        # },
         # {
         #     'data': loader.HTRU2Data(verbose=verbose, seed=seed),
         #     'name': 'htru2',

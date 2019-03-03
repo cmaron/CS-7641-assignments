@@ -10,11 +10,11 @@ __all__ = ['DS_NAME', 'TEST_DATA_FILE', 'TRAIN_DATA_FILE', 'VALIDATE_DATA_FILE',
            'initialize_instances', 'error_on_data_set', 'train']
 
 # Data set used for exploration
-DS_NAME = 'HTRU2Data'
+DS_NAME = 'TitanicData'
 
-TEST_DATA_FILE = '../data/{}_test.csv'.format(DS_NAME)
-TRAIN_DATA_FILE = '../data/{}_train.csv'.format(DS_NAME)
-VALIDATE_DATA_FILE = '../data/{}_validate.csv'.format(DS_NAME)
+TEST_DATA_FILE = 'data/{}_test.csv'.format(DS_NAME)
+TRAIN_DATA_FILE = 'data/{}_train.csv'.format(DS_NAME)
+VALIDATE_DATA_FILE = 'data/{}_validate.csv'.format(DS_NAME)
 
 # TODO: Move this to a common lib?
 OUTPUT_DIRECTORY = './output'

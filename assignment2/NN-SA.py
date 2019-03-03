@@ -14,11 +14,12 @@ from func.nn.activation import RELU
 from base import *
 
 # Network parameters found "optimal" in Assignment 1
-INPUT_LAYER = 8
-HIDDEN_LAYER1 = 16
-HIDDEN_LAYER2 = 16
+INPUT_LAYER = 12
+HIDDEN_LAYER1 = 5
+HIDDEN_LAYER2 = 5
+HIDDEN_LAYER3 = 5
 OUTPUT_LAYER = 1
-TRAINING_ITERATIONS = 5001
+TRAINING_ITERATIONS = 100001
 OUTFILE = OUTPUT_DIRECTORY + '/NN_OUTPUT/NN_{}_LOG.csv'
 
 
@@ -39,7 +40,7 @@ def main(CE):
                                                             'acc_val', 'acc_tst', 'f1_trg', 'f1_val', 'f1_tst',
                                                             'elapsed'))
     classification_network = factory.createClassificationNetwork(
-        [INPUT_LAYER, HIDDEN_LAYER1, HIDDEN_LAYER2, OUTPUT_LAYER], relu)
+        [INPUT_LAYER, HIDDEN_LAYER1, HIDDEN_LAYER2, HIDDEN_LAYER3, OUTPUT_LAYER], relu)
     nnop = NeuralNetworkOptimizationProblem(data_set, classification_network, measure)
     oa = SimulatedAnnealing(1E10, CE, nnop)
     train(oa, classification_network, oa_name, training_ints, validation_ints, testing_ints, measure,
