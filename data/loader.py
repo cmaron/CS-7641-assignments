@@ -295,10 +295,10 @@ class TitanicData(DataLoader):
         super().__init__(path, verbose, seed)
 
     def _load_data(self):
-        self._data = pd.read_csv(self._path, header=1)
+        self._data = pd.read_csv(self._path, header=None)
 
     def class_column_name(self):
-        return '2'
+        return '13'
 
     def data_name(self):
         return 'TitanicData'
@@ -404,5 +404,5 @@ if __name__ == '__main__':
     #ca_data = CreditApprovalData(verbose=True)
     #ca_data.load_and_process()
 
-    ta_data = TitanicData(verbose=True)
-    ta_data.load_and_process()
+    tt_data = TitanicData(verbose=True)
+    tt_data.load_and_process()
