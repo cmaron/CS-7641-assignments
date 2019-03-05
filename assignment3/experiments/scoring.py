@@ -18,7 +18,7 @@ f1_scorer = make_scorer(f1_accuracy)
 
 
 def get_scorer(dataset):
-    if dataset.balanced:
+    if not dataset.balanced:
         return f1_scorer, f1_accuracy
 
     return scorer, balanced_accuracy
