@@ -40,8 +40,8 @@ if __name__ == '__main__':
     parser.add_argument('--skiprerun', action='store_true',
                         help='If true, do not re-run the main experiment before clustering '
                              '(This MUST be used with --dim and a specific experiment)')
-    parser.add_argument('--statlog', action='store_true', help='Run only statlog vehicle')
-    parser.add_argument('--htru2', action='store_true', help='Run only HTRU2')
+    parser.add_argument('--dataset1', action='store_true', help='Run only data set 1')
+    parser.add_argument('--dataset2', action='store_true', help='Run only data set 2')
     parser.add_argument('--benchmark', action='store_true', help='Run the benchmark experiments')
     parser.add_argument('--ica', action='store_true', help='Run the ICA experiments')
     parser.add_argument('--pca', action='store_true', help='Run the PCA experiments')
@@ -67,8 +67,8 @@ if __name__ == '__main__':
         parser.print_help()
         sys.exit(1)
 
-    if args.statlog and args.htru2:
-        logger.error("Can only specify one of '--statlog' or '--htru2', not both")
+    if args.dataset1 and args.dataset2:
+        logger.error("Can only specify one of '--dataset1' or '--dataset2', not both")
         parser.print_help()
         sys.exit(1)
 
@@ -83,23 +83,23 @@ if __name__ == '__main__':
     logger.info("----------")
 
     datasets = []
-    statlog_details = {
+    dataset1_details = {
             'data': loader.StatlogVehicleData(verbose=verbose, seed=seed),
             'name': 'statlog_vehicle',
             'readable_name': 'Statlog Vehicle',
         }
-    htru2_details = {
+    dataset2_details = {
             'data': loader.HTRU2Data(verbose=verbose, seed=seed),
             'name': 'htru2',
             'readable_name': 'HTRU2',
         }
-    if args.statlog:
-        datasets.append(statlog_details)
-    elif args.htru2:
-        datasets.append(htru2_details)
-    elif not args.statlog and not args.htru2:
-        datasets.append(statlog_details)
-        datasets.append(htru2_details)
+    if args.dataset1:
+        datasets.append(dataset1_details)
+    elif args.dataset2:
+        datasets.append(dataset2_details)
+    elif not args.dataset1 and not args.dataset2:
+        datasets.append(dataset1_details)
+        datasets.append(dataset2_details)
 
     experiment_details = []
     for ds in datasets:
