@@ -631,7 +631,10 @@ if __name__ == '__main__':
             for algo in best_files:
                 file = best_files[algo][0]
                 _, params = output_file_name_regex.search(file).groups()
-                params = list(filter(None, params[0:-1].split('_')))
+                if nn_curve:
+                    params = list(filter(None, params.split('_')))
+                else:
+                    params = list(filter(None, params[0:-1].split('_')))
                 best_value = 0
                 best_time = 0
                 best_iterations = 0
