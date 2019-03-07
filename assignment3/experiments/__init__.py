@@ -48,11 +48,6 @@ pipeline_cachedir = mkdtemp()
 # pipeline_memory = Memory(cachedir=pipeline_cachedir, verbose=10)
 pipeline_memory = None
 
-# The best ANN params from assignment 1 (for just one dataset)
-BEST_NN_PARAMS = {'NN__activation': ['relu'], 'NN__alpha': [1.0],
-                  'NN__hidden_layer_sizes': [(36, 36)], 'NN__learning_rate_init': [0.016]}
-
-
 def run_subexperiment(main_experiment, out, ds=None):
     if not os.path.exists(out):
         os.makedirs(out)
@@ -64,6 +59,7 @@ def run_subexperiment(main_experiment, out, ds=None):
         details.ds if not ds else ds,
         details.ds_name,
         details.ds_readable_name,
+        details.best_nn_params,
         details.threads,
         details.seed)
     ce = clustering.ClusteringExperiment(clustering_details, verbose=main_experiment.get_vebose())

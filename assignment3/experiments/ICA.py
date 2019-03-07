@@ -67,7 +67,7 @@ class ICAExperiment(experiments.BaseExperiment):
         # ANN based on best params from assignment 1
         mlp = MLPClassifier(activation='relu', max_iter=2000, early_stopping=True, random_state=self._details.seed)
         pipe = Pipeline([('ica', ica), ('NN', mlp)], memory=experiments.pipeline_memory)
-        gs, _ = self.gs_with_best_estimator(pipe, experiments.BEST_NN_PARAMS, type='ass1')
+        gs, _ = self.gs_with_best_estimator(pipe, self._details.best_nn_params, type='ass1')
 
         tmp = pd.DataFrame(gs.cv_results_)
         tmp.to_csv(self._out.format('{}_ass1_dim_red.csv'.format(self._details.ds_name)))

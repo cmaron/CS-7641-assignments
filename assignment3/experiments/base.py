@@ -21,12 +21,23 @@ if not os.path.exists('{}/images'.format(OUTPUT_DIRECTORY)):
 
 
 class ExperimentDetails(object):
-    def __init__(self, ds, ds_name, ds_readable_name, threads, seed):
+    def __init__(self, ds, ds_name, ds_readable_name, best_nn_params, threads, seed):
         self.ds = ds
         self.ds_name = ds_name
         self.ds_readable_name = ds_readable_name
+        self.best_nn_params = best_nn_params
         self.threads = threads
         self.seed = seed
+
+    def __str__(self):
+        return 'ExperimentDetails(ds={}, ds_name={}, ds_readable_name={}, best_nn_params={}, threads={}, seed={})'.format(
+            self.ds,
+            self.ds_name,
+            self.ds_readable_name,
+            self.best_nn_params,
+            self.threads,
+            self.seed
+        )
 
 
 class BaseExperiment(ABC):

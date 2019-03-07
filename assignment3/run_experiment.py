@@ -1,4 +1,5 @@
 import argparse
+import json
 import logging
 import sys
 
@@ -22,10 +23,13 @@ def run_experiment(experiment_details, experiment, timing_key, dim, skiprerun, v
 
         if not skiprerun:
             logger.info("Running {} experiment: {} ({})".format(timing_key, details.ds_readable_name, dim))
+            logger.info(" Details: {}".format(details))
             exp.perform()
 
         if dim is not None:
             logger.info("Running with dimension {}".format(dim))
+            if skiprerun:
+                logger.info(" Details: {}".format(details))
             exp.perform_cluster(dim)
     t_d = datetime.now() - t
     timings[timing_key] = t_d.seconds
@@ -87,12 +91,16 @@ if __name__ == '__main__':
             'data': loader.StatlogVehicleData(verbose=verbose, seed=seed),
             'name': 'statlog_vehicle',
             'readable_name': 'Statlog Vehicle',
+            'best_nn_params': {'NN__activation': ['relu'], 'NN__alpha': [1.0],
+                               'NN__hidden_layer_sizes': [(36, 36)], 'NN__learning_rate_init': [0.016]}
         }
     dataset2_details = {
             'data': loader.HTRU2Data(verbose=verbose, seed=seed),
             'name': 'htru2',
             'readable_name': 'HTRU2',
-        }
+            'best_nn_params': {'NN__activation': ['relu'], 'NN__alpha': [1.0],
+                               'NN__hidden_layer_sizes': [(36, 36)], 'NN__learning_rate_init': [0.016]}
+    }
     if args.dataset1:
         datasets.append(dataset1_details)
     elif args.dataset2:
@@ -108,7 +116,7 @@ if __name__ == '__main__':
         data.build_train_test_split()
         data.scale_standard()
         experiment_details.append(experiments.ExperimentDetails(
-            data, ds['name'], ds['readable_name'],
+            data, ds['name'], ds['readable_name'], ds['best_nn_params'],
             threads=threads,
             seed=seed
         ))
