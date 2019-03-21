@@ -544,7 +544,7 @@ def read_and_plot_acc(problem, file, output_dir):
 
     title = '{} - {}: Accuracy vs Number of Clusters'.format(ds_readable_name, problem['name'])
     df = pd.read_csv(file).set_index('k')
-    p = plot_sse(title, df)
+    p = plot_acc(title, df)
     p = watermark(p)
     p.savefig(
         '{}/{}/{}_acc.png'.format(output_dir, problem['name'], ds_name),
