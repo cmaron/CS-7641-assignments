@@ -51,10 +51,6 @@ class PolicyIterationSolver(BaseSolver):
                 self._policy_stable = False
             self._policy[s] = np.eye(self._env.nA)[best_a]
 
-        # If we've gone through a few steps but have not improved, consider us converged
-        if delta > self._last_delta and self._steps > 10:
-            self._policy_stable = True
-
         self._steps += 1
         self._step_times.append(time.clock() - start_time)
         self._last_delta = delta
