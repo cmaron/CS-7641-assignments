@@ -19,6 +19,8 @@ from matplotlib import cycler
 from matplotlib.ticker import NullFormatter, FormatStrFormatter
 from os.path import basename
 
+import numpy.matlib
+
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(name)s - %(levelname)s - %(message)s')
 logger = logging.getLogger(__name__)
@@ -324,10 +326,10 @@ def plot_combined(title, df, data_columns, tsne_data=None, extra_data=None, extr
 
     if extra_data is not None and extra_data_name is not None:
         ex_ax = ax1.twinx()
-        ex_ax.plot(extra_data.index.values, extra_data.iloc[:, 0], linewidth=1,
-                   label=extra_data_name)
+        ex_ax.plot(extra_data.index.values, extra_data.iloc[:, 0], linewidth=1, color='r', label=extra_data_name)
         ex_ax.set_ylabel(extra_data_name)
         ex_ax.tick_params('y')
+        ax1.plot(0, 0, '-r', label = extra_data_name)
 
     ax1.legend(loc="best")
     ax1.grid()
