@@ -66,7 +66,7 @@ class QLearningSolver(BaseSolver):
             self._epsilon -= self._epsilon * self._epsilon_decay
 
             total_reward += reward
-            self._last_delta = max(self._last_delta, td_delta)
+            self._last_delta = max(self._last_delta, abs(td_delta))
 
             episode_steps += 1
             if done:
