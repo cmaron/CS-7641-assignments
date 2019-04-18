@@ -6,7 +6,7 @@ A huge thanks to jontay ([https://github.com/JonathanTay](https://github.com/Jon
 
 ## Wait, code?
 
-Yup, we are encouraged to steal code. All the code. It's fine. Only the analysis matters.
+Yup, we were encouraged to steal code. All the code. It was fine. Only the analysis mattered.  
 
 For more support of this claim, see [https://gist.github.com/cmaron/46f0992d42be87380c208086eec9797f](https://gist.github.com/cmaron/46f0992d42be87380c208086eec9797f)
 
