@@ -1,4 +1,4 @@
-# CS 7641 Assignments
+# ChedCode: CS 7641 Assignments
 
 This repo is full of code for [CS 7641 - Machine Learning](https://www.omscs.gatech.edu/cs-7641-machine-learning) at Georgia Tech. 
 
@@ -6,11 +6,14 @@ A huge thanks to jontay ([https://github.com/JonathanTay](https://github.com/Jon
 
 ## Wait, code?
 
-Yup, we are encouraged to steal code. All the code. It's fine. Only the analysis matters.
+Yup, we were encouraged to steal code. All the code. It was fine. Only the analysis mattered.
 
-For more support of this claim, see [https://gist.github.com/cmaron/46f0992d42be87380c208086eec9797f](https://gist.github.com/cmaron/46f0992d42be87380c208086eec9797f)
+![alt text](https://user-images.githubusercontent.com/1142102/56366858-0c55a580-61c2-11e9-93fa-ac081cf5b017.png)
+![alt text](https://user-images.githubusercontent.com/1142102/56366864-0fe92c80-61c2-11e9-891f-cbd003a19903.png)
 
-For even _more_ support, we were asked to submit links to code rather than the actual code when submitting assignments partway through the semester.
+For dated support of this claim, see [https://gist.github.com/cmaron/46f0992d42be87380c208086eec9797f](https://gist.github.com/cmaron/46f0992d42be87380c208086eec9797f)
+
+For even _more_ dated support, we were asked to submit links to code rather than the actual code when submitting assignments partway through the semester.
 
 ## How do I use this?
 
