@@ -48,3 +48,10 @@ That said, this is based off of the Fall 2018 semester. Things can change and yo
 Feel free to open an issue for things that are flat out broken (or even better open a PR) and I can take a look.
 
 That said, caveat emptor applies. 
+
+## Pricing
+|                | Student | Enterprise       |
+|----------------|---------|------------------|
+| ChedCode Base  | x       | x                |
+| ChedCode Cloud |         | x                |
+| Price          | Free    | 10 ChedBux / Day |
