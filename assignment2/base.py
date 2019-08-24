@@ -29,8 +29,7 @@ for subdir in subdirs:
     if not os.path.exists('{}/images/{}'.format(OUTPUT_DIRECTORY, subdir)):
         os.makedirs('{}/images/{}'.format(OUTPUT_DIRECTORY, subdir))
 
-seed = 653091685
-# seed = rand.randint(0, (2 ** 32) - 1)
+seed = rand.randint(0, (2 ** 32) - 1)
 print("Using seed {}".format(seed))
 rand.seed(seed)
 
